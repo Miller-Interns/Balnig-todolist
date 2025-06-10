@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import PageOne from '@/components/page-one.vue'
+import PageOnee from '@/components/page-one.vue'
 </script>
 
 <template>
