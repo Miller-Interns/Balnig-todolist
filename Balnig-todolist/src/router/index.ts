@@ -1,17 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router' 
+import PageOne from '../components/page-one.vue'
+import PageTwo from '../components/page-two.vue'
+import { RouteNames } from './route-names'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
       path: '/',
-      name: 'home',
-      component: () => import('../components/page-one.vue'),
+      name: RouteNames.PageOne,
+      component: PageOne,
     },
     {
       path: '/todo',
-      name: 'ToDoList',
-      component: import('../components/page-two.vue'),
+      name: RouteNames.PageTwo,
+      component: PageTwo,
     },
   ],
 })

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { useRouter } from 'vue-router'
+import { RouteNames } from '@/router/route-names'
+const router = useRouter();
+
     const fullName = 'Janess H. Balnig'
     const startingDate = 'Starting Date: June 6, 2025'
     const buttonName = 'Go to app'
@@ -8,7 +12,7 @@
     <div class="makeItCenter">
         <h1>{{ fullName }}</h1>
         <h2>{{ startingDate }}</h2>
-        <button @click="$router.push('/todo')">{{ buttonName }}</button>
+        <button @click="router.push({name: RouteNames.PageTwo})">{{ buttonName }}</button>
     </div>
 </template>
 

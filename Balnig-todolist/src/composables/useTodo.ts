@@ -2,7 +2,7 @@ import { ref, reactive, computed, watch, onMounted } from 'vue'
 import { useTodoStore } from '@/stores/todo-store'
 import type { TodoCategory, TodoItem } from '@/types/todo-types'
 
-export function useLogic() {
+export function useTodo() {
   const store = useTodoStore()
   const todoCategory = ref<TodoCategory[]>(store.todoCategory)
   const newCategory = ref('')
@@ -37,7 +37,7 @@ export function useLogic() {
     store.todoCategory = todoCategory.value  
   }
 
-  function delCategory(categoryId: number) {
+  function deleteCategory(categoryId: number) {
     todoCategory.value = todoCategory.value.filter(cat => cat.id !== categoryId)
     delete newTodoItem[categoryId]
     store.todoCategory = todoCategory.value
@@ -97,7 +97,7 @@ export function useLogic() {
     newCategory,
     newTodoItem,
     addCategory,
-    delCategory,
+    deleteCategory,
     editCategory,
     addTodoItem,
     delTodoItem,

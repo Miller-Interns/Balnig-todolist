@@ -1,19 +1,22 @@
 <script setup lang="ts">
-import { useLogic } from '@/composables/use-logic'
+import { useTodo } from '@/composables/useTodo'
+import { useRouter } from 'vue-router'
+import { RouteNames } from '@/router/route-names'
+const router = useRouter();
 
 const {
   todoCategory,
   newCategory,
   newTodoItem,
   addCategory,
-  delCategory,
+  deleteCategory,
   editCategory,
   addTodoItem,
   delTodoItem,
   editTodoItem,
   toggleTodoItem,
   allTodoItems
-} = useLogic()
+} = useTodo()
 </script>
 
 <template>
@@ -30,7 +33,7 @@ const {
     <div v-for="cat in todoCategory" :key="cat.id" class="category-box">
       <input v-model="cat.title" @blur="editCategory(cat.id, cat.title)" 
       class="category-title"/>
-      <button @click="delCategory(cat.id)">Delete Category</button>
+      <button @click="deleteCategory(cat.id)">Delete Category</button>
 
     <form @submit.prevent="addTodoItem(cat.id)">
       <input v-model="newTodoItem[cat.id]" placeholder="Add New Item" required/>
@@ -49,7 +52,7 @@ const {
 
   <div class="back-btn">
     <button style="background-color: hsl(60, 90%, 50%); color: rgb(0, 0, 0);" 
-    @click="$router.push('/')">Back</button>
+    @click="router.push({name: RouteNames.PageOne})">Back</button>
   </div>
 
   <div class="seeAll">
